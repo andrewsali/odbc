@@ -104,7 +104,7 @@ void odbc_result::bind_list(Rcpp::List const& x, bool use_transaction) {
   }
   auto nrows = Rf_length(x[0]);
   int start = 0;
-  int batch_size = 10240;
+  int batch_size = 102400;
   std::unique_ptr<nanodbc::transaction> t;
   if (use_transaction && c_->supports_transactions()) {
     t = std::unique_ptr<nanodbc::transaction>(
